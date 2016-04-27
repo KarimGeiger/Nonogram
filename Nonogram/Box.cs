@@ -42,7 +42,6 @@ namespace Nonogram
             Top = Nonogram.RASTER_START_Y + (Y * (BUTTON_HEIGHT + PADDING));
             Width = BUTTON_WIDTH;
             Height = BUTTON_HEIGHT;
-            Margin = Padding.Empty;
             FlatStyle = FlatStyle.Flat;
             TabStop = false;
             FlatAppearance.BorderSize = 0;
