@@ -5,12 +5,6 @@ namespace Nonogram
 {
     class Box : Button
     {
-        public const int BUTTON_WIDTH = 33;
-        public const int BUTTON_HEIGHT = 33;
-        public const int RASTER_START_X = 150;
-        public const int RASTER_START_Y = 150;
-        public const int PADDING = 1;
-
         public enum BoxState { UNKNOWN, MARKED, BLANK }
         public enum Level { Easy = 15, Normal = 11, Hard = 9 }
 
@@ -40,10 +34,10 @@ namespace Nonogram
             Expected = expected;
 
             BackColor = GetColor();
-            Left = RASTER_START_X + (X * (BUTTON_WIDTH + PADDING));
-            Top = RASTER_START_Y + (Y * (BUTTON_HEIGHT + PADDING));
-            Width = BUTTON_WIDTH;
-            Height = BUTTON_HEIGHT;
+            Left = Nonogram.RASTER_START_X + (X * (Nonogram.BUTTON_WIDTH + Nonogram.PADDING));
+            Top = Nonogram.RASTER_START_Y + (Y * (Nonogram.BUTTON_HEIGHT + Nonogram.PADDING));
+            Width = Nonogram.BUTTON_WIDTH;
+            Height = Nonogram.BUTTON_HEIGHT;
             Margin = Padding.Empty;
             FlatStyle = FlatStyle.Flat;
             TabStop = false;
