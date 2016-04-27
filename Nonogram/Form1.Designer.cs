@@ -132,6 +132,7 @@
             this.Controls.Add(this.btnValidate);
             this.Controls.Add(this.btnGenerate);
             this.Controls.Add(this.numSizeX);
+            this.DoubleBuffered = true;
             this.Name = "Form1";
             this.Text = "Nonogram";
             this.Load += new System.EventHandler(this.Form1_Load);
