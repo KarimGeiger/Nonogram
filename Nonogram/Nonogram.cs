@@ -8,11 +8,8 @@ namespace Nonogram
 {
     class Nonogram
     {
-        public const int BUTTON_WIDTH = 33;
-        public const int BUTTON_HEIGHT = 33;
         public const int RASTER_START_X = 150;
         public const int RASTER_START_Y = 150;
-        public const int PADDING = 1;
 
         public List<List<Box>> PointsX { get; set; } = new List<List<Box>>();
         public List<List<Box>> PointsY { get; set; } = new List<List<Box>>();
@@ -44,10 +41,10 @@ namespace Nonogram
                 Labels.Add(new Label
                 {
                     Text = String.Join("  ", numbersX.Last()),
-                    Top = RASTER_START_Y + (y * (BUTTON_HEIGHT + 1)),
+                    Top = RASTER_START_Y + (y * (Box.BUTTON_HEIGHT + 1)),
                     Left = RASTER_START_X - 210,
                     Width = 200,
-                    Height = BUTTON_HEIGHT,
+                    Height = Box.BUTTON_HEIGHT,
                     TextAlign = ContentAlignment.MiddleRight
                 });
             }
@@ -59,8 +56,8 @@ namespace Nonogram
                 {
                     Text = String.Join("\n", numbersY.Last()),
                     Top = RASTER_START_X - 410,
-                    Left = RASTER_START_Y + (x * (BUTTON_WIDTH + 1)),
-                    Width = BUTTON_WIDTH,
+                    Left = RASTER_START_Y + (x * (Box.BUTTON_WIDTH + 1)),
+                    Width = Box.BUTTON_WIDTH,
                     Height = 400,
                     TextAlign = ContentAlignment.BottomCenter
                 });
