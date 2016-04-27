@@ -54,7 +54,7 @@ namespace Nonogram
 
         private void btnValidate_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Congratulations, " + (nonogram.IsValid() ? "You solved it!" : "You suck!"), "😄");
+            MessageBox.Show("Congratulations, " + (nonogram.IsValid() ? "you solved it!" : "you suck!"), "😄");
         }
     }
 }
