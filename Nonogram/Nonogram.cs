@@ -8,9 +8,9 @@ namespace Nonogram
 {
     class Nonogram
     {
-        public List<List<Point>> pointsX = new List<List<Point>>();
-        public List<List<Point>> pointsY = new List<List<Point>>();
-        public List<Label> labels = new List<Label>();
+        public List<List<Point>> PointsX { get; set; } = new List<List<Point>>();
+        public List<List<Point>> PointsY { get; set; } = new List<List<Point>>();
+        public List<Label> Labels { get; set; } = new List<Label>();
         private List<List<int>> numbersX = new List<List<int>>();
         private List<List<int>> numbersY = new List<List<int>>();
         private static Random random = new Random();
@@ -19,28 +19,28 @@ namespace Nonogram
         {
             for (int y = 0; y < sizeY; y++)
             {
-                pointsX.Add(new List<Point>());
+                PointsX.Add(new List<Point>());
 
                 for (int x = 0; x < sizeX; x++)
                 {
-                    if (pointsY.Count == x)
+                    if (PointsY.Count == x)
                     {
-                        pointsY.Add(new List<Point>());
+                        PointsY.Add(new List<Point>());
                     }
                     var point = new Point
                     {
-                        x = x,
-                        y = y,
-                        expected = random.Next(0, probability) >= 5 ? Point.State.MARKED : Point.State.BLANK
+                        X = x,
+                        Y = y,
+                        Expected = random.Next(0, probability) >= 5 ? Point.State.MARKED : Point.State.BLANK
                     };
 
                     // TODO: These lists can be merged to one list, since they contain exactly the same points
-                    pointsX[y].Add(point);
-                    pointsY[x].Add(point);
+                    PointsX[y].Add(point);
+                    PointsY[x].Add(point);
                 }
 
-                numbersX.Add(GetNumbers(pointsX[y], true));
-                labels.Add(new Label
+                numbersX.Add(GetNumbers(PointsX[y], true));
+                Labels.Add(new Label
                 {
                     Text = String.Join("  ", numbersX.Last()),
                     Top = Form1.RASTER_START_Y + (y * (Form1.BUTTON_HEIGHT + 1)),
@@ -53,8 +53,8 @@ namespace Nonogram
 
             for (int x = 0; x < sizeX; x++)
             {
-                numbersY.Add(GetNumbers(pointsY[x], true));
-                labels.Add(new Label
+                numbersY.Add(GetNumbers(PointsY[x], true));
+                Labels.Add(new Label
                 {
                     Text = String.Join("\n", numbersY.Last()),
                     Top = Form1.RASTER_START_X - 410,
@@ -73,7 +73,7 @@ namespace Nonogram
 
             for (int i = 0; i < list.Count; i++)
             {
-                if ((forExpected ? list[i].expected : list[i].state) != Point.State.MARKED)
+                if ((forExpected ? list[i].Expected : list[i].state) != Point.State.MARKED)
                 {
                     lastIndex = -2;
                     continue;
@@ -102,7 +102,7 @@ namespace Nonogram
         {
             for (int x = 0; x < numbersY.Count; x++)
             {
-                if (!numbersY[x].SequenceEqual(GetNumbers(pointsY[x], false)))
+                if (!numbersY[x].SequenceEqual(GetNumbers(PointsY[x], false)))
                 {
                     return false;
                 }
@@ -110,7 +110,7 @@ namespace Nonogram
 
             for (int y = 0; y < numbersX.Count; y++)
             {
-                if (!numbersX[y].SequenceEqual(GetNumbers(pointsX[y], false)))
+                if (!numbersX[y].SequenceEqual(GetNumbers(PointsX[y], false)))
                 {
                     return false;
                 }

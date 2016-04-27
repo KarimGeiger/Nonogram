@@ -5,13 +5,13 @@ namespace Nonogram
 {
     class Point
     {
-        public enum State { UNKNOWN = 0, MARKED = 1, BLANK = 2 };
-        public enum Level { Easy = 15, Normal = 11, Hard = 9 };
+        public enum State { UNKNOWN = 0, MARKED = 1, BLANK = 2 }
+        public enum Level { Easy = 15, Normal = 11, Hard = 9 }
 
-        public State state = State.UNKNOWN;
-        public State expected; // Set state to expected to show solved Nonogram
-        public int x;
-        public int y;
+        public State state { get; set; } = State.UNKNOWN;
+        public State Expected { get; set; } // Set state to expected to show solved Nonogram
+        public int X { get; set; }
+        public int Y { get; set; }
         private Button button;
 
         public void ButtonClick(object sender, MouseEventArgs e)
@@ -41,15 +41,15 @@ namespace Nonogram
             }
         }
 
-        public Button Button()
+        public Button GetButton()
         {
             if (button == null)
             {
                 button = new Button
                 {
                     BackColor = Color(),
-                    Left = Form1.RASTER_START_X + (x * (Form1.BUTTON_WIDTH + Form1.PADDING)),
-                    Top = Form1.RASTER_START_Y + (y * (Form1.BUTTON_HEIGHT + Form1.PADDING)),
+                    Left = Form1.RASTER_START_X + (X * (Form1.BUTTON_WIDTH + Form1.PADDING)),
+                    Top = Form1.RASTER_START_Y + (Y * (Form1.BUTTON_HEIGHT + Form1.PADDING)),
                     Width = Form1.BUTTON_WIDTH,
                     Height = Form1.BUTTON_HEIGHT,
                     Margin = Padding.Empty,

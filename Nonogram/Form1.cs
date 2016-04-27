@@ -38,8 +38,8 @@ namespace Nonogram
             }
 
             // Clean up old Nonogram
-            nonogram.labels.ForEach(x => Controls.Remove(x));
-            nonogram.pointsX.ForEach(x => x.ForEach(y => Controls.Remove(y.Button())));
+            nonogram.Labels.ForEach(x => Controls.Remove(x));
+            nonogram.PointsX.ForEach(x => x.ForEach(y => Controls.Remove(y.GetButton())));
 
             CreateAndDrawNonogram((int)numSizeX.Value, (int)numSizeY.Value, (int)cbLevel.SelectedItem);
         }
@@ -48,14 +48,14 @@ namespace Nonogram
         {
             nonogram = new Nonogram(sizeX, sizeY, probability);
 
-            Controls.AddRange(nonogram.labels.ToArray());
-            nonogram.pointsX.ForEach(x => x.ForEach(y => Controls.Add(y.Button())));
+            Controls.AddRange(nonogram.Labels.ToArray());
+            nonogram.PointsX.ForEach(x => x.ForEach(y => Controls.Add(y.GetButton())));
 
         }
 
         private void btnValidate_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Congratulations, " + (nonogram.IsValid() ? "you solved it!" : "you suck!"), "😄");
+            MessageBox.Show("Congratulations, " + (nonogram.IsValid() ? "You solved it!" : "You suck!"), "😄");
         }
     }
 }
