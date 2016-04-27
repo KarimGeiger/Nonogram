@@ -3,7 +3,7 @@ using System.Windows.Forms;
 
 namespace Nonogram
 {
-    class Box : Button
+    public class Box : Button
     {
         public const int BUTTON_WIDTH = 33;
         public const int BUTTON_HEIGHT = 33;
@@ -19,7 +19,7 @@ namespace Nonogram
             set
             {
                 state = value;
-                BackColor = GetColor();
+                BackColor = value.ToColor();
             }
         }
 
@@ -37,7 +37,7 @@ namespace Nonogram
             Y = y;
             Expected = expected;
 
-            BackColor = GetColor();
+            BackColor = State.ToColor();
             Left = Nonogram.RASTER_START_X + (X * (BUTTON_WIDTH + PADDING));
             Top = Nonogram.RASTER_START_Y + (Y * (BUTTON_HEIGHT + PADDING));
             Width = BUTTON_WIDTH;
@@ -60,14 +60,17 @@ namespace Nonogram
                 State++;
             }
         }
+    }
 
-        private Color GetColor()
+    public static class BoxStateExtension
+    {
+        public static Color ToColor(this Box.BoxState state)
         {
-            switch (State)
+            switch (state)
             {
-                case BoxState.BLANK:
+                case Box.BoxState.BLANK:
                     return Color.White;
-                case BoxState.MARKED:
+                case Box.BoxState.MARKED:
                     return Color.Black;
                 default:
                     return Color.Gray;
