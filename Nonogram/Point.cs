@@ -10,28 +10,14 @@ namespace Nonogram
 {
     class Point
     {
-        public static Random random = new Random();
         public enum State { UNKNOWN = 0, MARKED = 1, BLANK = 2 };
-        public enum Level { Easy = 15, Normal = 11, Hard = 9};
+        public enum Level { Easy = 15, Normal = 11, Hard = 9 };
 
         public State state = State.UNKNOWN;
-        public State expected; 
+        public State expected; // Set state to expected to show solved Nonogram
         public int x;
         public int y;
         private Button button;
-
-        public Point(int probability)
-        {
-            if (random.Next(0, probability) >= 5)
-            {
-                expected = State.MARKED;
-            }
-            else
-            {
-                expected = State.BLANK;
-            }
-            //state = expected; // Debug: Enable this line to solve the Nonogram on build
-        }
 
         public void ButtonClick(object sender, MouseEventArgs e)
         {

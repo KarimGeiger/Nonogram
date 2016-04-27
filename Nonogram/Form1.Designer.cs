@@ -54,7 +54,7 @@
             0});
             this.numSizeX.Name = "numSizeX";
             this.numSizeX.Size = new System.Drawing.Size(40, 20);
-            this.numSizeX.TabIndex = 0;
+            this.numSizeX.TabIndex = 2;
             this.numSizeX.Value = new decimal(new int[] {
             10,
             0,
@@ -66,17 +66,17 @@
             this.btnGenerate.Location = new System.Drawing.Point(198, 10);
             this.btnGenerate.Name = "btnGenerate";
             this.btnGenerate.Size = new System.Drawing.Size(75, 23);
-            this.btnGenerate.TabIndex = 1;
+            this.btnGenerate.TabIndex = 4;
             this.btnGenerate.Text = "Generate";
             this.btnGenerate.UseVisualStyleBackColor = true;
             this.btnGenerate.Click += new System.EventHandler(this.btnGenerate_Click);
             // 
             // btnValidate
             // 
-            this.btnValidate.Location = new System.Drawing.Point(279, 9);
+            this.btnValidate.Location = new System.Drawing.Point(279, 10);
             this.btnValidate.Name = "btnValidate";
             this.btnValidate.Size = new System.Drawing.Size(75, 23);
-            this.btnValidate.TabIndex = 2;
+            this.btnValidate.TabIndex = 5;
             this.btnValidate.Text = "Validate";
             this.btnValidate.UseVisualStyleBackColor = true;
             this.btnValidate.Click += new System.EventHandler(this.btnValidate_Click);
@@ -96,7 +96,7 @@
             0});
             this.numSizeY.Name = "numSizeY";
             this.numSizeY.Size = new System.Drawing.Size(40, 20);
-            this.numSizeY.TabIndex = 3;
+            this.numSizeY.TabIndex = 1;
             this.numSizeY.Value = new decimal(new int[] {
             10,
             0,
@@ -119,7 +119,7 @@
             this.cbLevel.Location = new System.Drawing.Point(115, 11);
             this.cbLevel.Name = "cbLevel";
             this.cbLevel.Size = new System.Drawing.Size(77, 21);
-            this.cbLevel.TabIndex = 5;
+            this.cbLevel.TabIndex = 3;
             // 
             // Form1
             // 
