@@ -50,7 +50,6 @@ namespace Nonogram
 
             Controls.AddRange(nonogram.Labels.ToArray());
             nonogram.PointsX.ForEach(x => x.ForEach(y => Controls.Add(y.GetButton())));
-
         }
 
         private void btnValidate_Click(object sender, EventArgs e)

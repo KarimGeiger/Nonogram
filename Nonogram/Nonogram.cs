@@ -95,7 +95,6 @@ namespace Nonogram
             }
 
             return numbers;
-
         }
 
         public bool IsValid()
