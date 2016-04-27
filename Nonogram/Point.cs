@@ -5,60 +5,79 @@ namespace Nonogram
 {
     class Point
     {
-        public enum State { UNKNOWN = 0, MARKED = 1, BLANK = 2 }
+        public enum CaseState { UNKNOWN, MARKED, BLANK }
         public enum Level { Easy = 15, Normal = 11, Hard = 9 }
 
-        public State state { get; set; } = State.UNKNOWN;
-        public State Expected { get; set; } // Set state to expected to show solved Nonogram
-        public int X { get; set; }
-        public int Y { get; set; }
+        private CaseState state;
+        public CaseState State
+        {
+            get { return state; }
+            set
+            {
+                state = value;
+                button.BackColor = GetColor();
+            }
+        }
+
+        /// <summary>
+        /// Gets or sets the expected state that the nonogramm can be declared as solved.
+        /// </summary>
+        public CaseState Expected { get; }
+
+        public int X { get; }
+        public int Y { get; }
+
+        public Point(int x, int y, CaseState expected)
+        {
+            X = x;
+            Y = y;
+            Expected = expected;
+        }
+
         private Button button;
 
         public void ButtonClick(object sender, MouseEventArgs e)
         {
-            if (state == State.BLANK)
+            if (State == CaseState.BLANK)
             {
-                state = State.UNKNOWN;
+                State = CaseState.UNKNOWN;
             }
             else
             {
-                state++;
+                State++;
             }
-
-            button.BackColor = Color();
         }
 
-        private Color Color()
+        private Color GetColor()
         {
-            switch (state)
+            switch (State)
             {
-                case State.BLANK:
-                    return System.Drawing.Color.White;
-                case State.MARKED:
-                    return System.Drawing.Color.Black;
+                case CaseState.BLANK:
+                    return Color.White;
+                case CaseState.MARKED:
+                    return Color.Black;
                 default:
-                    return System.Drawing.Color.Gray;
+                    return Color.Gray;
             }
         }
 
         public Button GetButton()
         {
-            if (button == null)
+            if (button != null) return button;
+
+            button = new Button
             {
-                button = new Button
-                {
-                    BackColor = Color(),
-                    Left = Form1.RASTER_START_X + (X * (Form1.BUTTON_WIDTH + Form1.PADDING)),
-                    Top = Form1.RASTER_START_Y + (Y * (Form1.BUTTON_HEIGHT + Form1.PADDING)),
-                    Width = Form1.BUTTON_WIDTH,
-                    Height = Form1.BUTTON_HEIGHT,
-                    Margin = Padding.Empty,
-                    FlatStyle = FlatStyle.Flat,
-                    TabStop = false
-                };
-                button.FlatAppearance.BorderSize = 0;
-                button.MouseClick += ButtonClick;
-            }
+                BackColor = GetColor(),
+                Left = Form1.RASTER_START_X + (X * (Form1.BUTTON_WIDTH + Form1.PADDING)),
+                Top = Form1.RASTER_START_Y + (Y * (Form1.BUTTON_HEIGHT + Form1.PADDING)),
+                Width = Form1.BUTTON_WIDTH,
+                Height = Form1.BUTTON_HEIGHT,
+                Margin = Padding.Empty,
+                FlatStyle = FlatStyle.Flat,
+                TabStop = false
+            };
+            button.FlatAppearance.BorderSize = 0;
+            button.MouseClick += ButtonClick;
 
             return button;
         }

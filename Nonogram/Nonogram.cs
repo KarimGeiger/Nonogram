@@ -27,12 +27,7 @@ namespace Nonogram
                     {
                         PointsY.Add(new List<Point>());
                     }
-                    var point = new Point
-                    {
-                        X = x,
-                        Y = y,
-                        Expected = random.Next(0, probability) >= 5 ? Point.State.MARKED : Point.State.BLANK
-                    };
+                    var point = new Point(x, y, random.Next(0, probability) >= 5 ? Point.CaseState.MARKED : Point.CaseState.BLANK);
 
                     // TODO: These lists can be merged to one list, since they contain exactly the same points
                     PointsX[y].Add(point);
@@ -73,7 +68,7 @@ namespace Nonogram
 
             for (int i = 0; i < list.Count; i++)
             {
-                if ((forExpected ? list[i].Expected : list[i].state) != Point.State.MARKED)
+                if ((forExpected ? list[i].Expected : list[i].State) != Point.CaseState.MARKED)
                 {
                     lastIndex = -2;
                     continue;
