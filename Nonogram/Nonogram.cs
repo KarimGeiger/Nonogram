@@ -66,7 +66,7 @@ namespace Nonogram
             }
         }
 
-        private List<int> GetNumbers(List<Point> list, bool forExpected)
+        private static List<int> GetNumbers(List<Point> list, bool forExpected)
         {
             var lastIndex = -2;
             var numbers = new List<int>();
