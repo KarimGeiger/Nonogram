@@ -5,6 +5,12 @@ namespace Nonogram
 {
     class Point
     {
+        public const int BUTTON_WIDTH = 33;
+        public const int BUTTON_HEIGHT = 33;
+        public const int RASTER_START_X = 150;
+        public const int RASTER_START_Y = 150;
+        public const int PADDING = 1;
+
         public enum CaseState { UNKNOWN, MARKED, BLANK }
         public enum Level { Easy = 15, Normal = 11, Hard = 9 }
 
@@ -68,10 +74,10 @@ namespace Nonogram
             button = new Button
             {
                 BackColor = GetColor(),
-                Left = Form1.RASTER_START_X + (X * (Form1.BUTTON_WIDTH + Form1.PADDING)),
-                Top = Form1.RASTER_START_Y + (Y * (Form1.BUTTON_HEIGHT + Form1.PADDING)),
-                Width = Form1.BUTTON_WIDTH,
-                Height = Form1.BUTTON_HEIGHT,
+                Left = RASTER_START_X + (X * (BUTTON_WIDTH + PADDING)),
+                Top = RASTER_START_Y + (Y * (BUTTON_HEIGHT + PADDING)),
+                Width = BUTTON_WIDTH,
+                Height = BUTTON_HEIGHT,
                 Margin = Padding.Empty,
                 FlatStyle = FlatStyle.Flat,
                 TabStop = false

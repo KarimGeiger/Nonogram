@@ -38,10 +38,10 @@ namespace Nonogram
                 Labels.Add(new Label
                 {
                     Text = String.Join("  ", numbersX.Last()),
-                    Top = Form1.RASTER_START_Y + (y * (Form1.BUTTON_HEIGHT + 1)),
-                    Left = Form1.RASTER_START_X - 210,
+                    Top = Point.RASTER_START_Y + (y * (Point.BUTTON_HEIGHT + 1)),
+                    Left = Point.RASTER_START_X - 210,
                     Width = 200,
-                    Height = Form1.BUTTON_HEIGHT,
+                    Height = Point.BUTTON_HEIGHT,
                     TextAlign = ContentAlignment.MiddleRight
                 });
             }
@@ -52,9 +52,9 @@ namespace Nonogram
                 Labels.Add(new Label
                 {
                     Text = String.Join("\n", numbersY.Last()),
-                    Top = Form1.RASTER_START_X - 410,
-                    Left = Form1.RASTER_START_Y + (x * (Form1.BUTTON_WIDTH + 1)),
-                    Width = Form1.BUTTON_WIDTH,
+                    Top = Point.RASTER_START_X - 410,
+                    Left = Point.RASTER_START_Y + (x * (Point.BUTTON_WIDTH + 1)),
+                    Width = Point.BUTTON_WIDTH,
                     Height = 400,
                     TextAlign = ContentAlignment.BottomCenter
                 });

@@ -5,12 +5,6 @@ namespace Nonogram
 {
     public partial class Form1 : Form
     {
-        public const int BUTTON_WIDTH = 33;
-        public const int BUTTON_HEIGHT = 33;
-        public const int RASTER_START_X = 150;
-        public const int RASTER_START_Y = 150;
-        public const int PADDING = 1;
-
         private Nonogram nonogram;
 
         public Form1()
