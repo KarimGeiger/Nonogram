@@ -70,9 +70,10 @@ namespace Nonogram
                     Left = Form1.RASTER_START_X + (x * (Form1.BUTTON_WIDTH + Form1.PADDING)),
                     Top = Form1.RASTER_START_Y + (y * (Form1.BUTTON_HEIGHT + Form1.PADDING)),
                     Width = Form1.BUTTON_WIDTH,
+                    Height = Form1.BUTTON_HEIGHT,
                     Margin = Padding.Empty,
                     FlatStyle = FlatStyle.Flat,
-                    TabStop = false
+                    TabStop = false,
                 };
                 button.FlatAppearance.BorderSize = 0;
                 button.MouseClick += ButtonClick;
