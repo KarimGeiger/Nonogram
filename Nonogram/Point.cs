@@ -26,7 +26,7 @@ namespace Nonogram
         }
 
         /// <summary>
-        /// Gets or sets the expected state that the nonogramm can be declared as solved.
+        /// Gets the expected state that the nonogramm can be declared as solved.
         /// </summary>
         public CaseState Expected { get; }
 
