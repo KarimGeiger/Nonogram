@@ -8,8 +8,8 @@ namespace Nonogram
 {
     class Nonogram
     {
-        public List<List<Point>> PointsX { get; set; } = new List<List<Point>>();
-        public List<List<Point>> PointsY { get; set; } = new List<List<Point>>();
+        public List<List<Box>> PointsX { get; set; } = new List<List<Box>>();
+        public List<List<Box>> PointsY { get; set; } = new List<List<Box>>();
         public List<Label> Labels { get; set; } = new List<Label>();
         private List<List<int>> numbersX = new List<List<int>>();
         private List<List<int>> numbersY = new List<List<int>>();
@@ -19,15 +19,15 @@ namespace Nonogram
         {
             for (int y = 0; y < sizeY; y++)
             {
-                PointsX.Add(new List<Point>());
+                PointsX.Add(new List<Box>());
 
                 for (int x = 0; x < sizeX; x++)
                 {
                     if (PointsY.Count == x)
                     {
-                        PointsY.Add(new List<Point>());
+                        PointsY.Add(new List<Box>());
                     }
-                    var point = new Point(x, y, random.Next(0, probability) >= 5 ? Point.CaseState.MARKED : Point.CaseState.BLANK);
+                    var point = new Box(x, y, random.Next(0, probability) >= 5 ? Box.BoxState.MARKED : Box.BoxState.BLANK);
 
                     // TODO: These lists can be merged to one list, since they contain exactly the same points
                     PointsX[y].Add(point);
@@ -38,10 +38,10 @@ namespace Nonogram
                 Labels.Add(new Label
                 {
                     Text = String.Join("  ", numbersX.Last()),
-                    Top = Point.RASTER_START_Y + (y * (Point.BUTTON_HEIGHT + 1)),
-                    Left = Point.RASTER_START_X - 210,
+                    Top = Box.RASTER_START_Y + (y * (Box.BUTTON_HEIGHT + 1)),
+                    Left = Box.RASTER_START_X - 210,
                     Width = 200,
-                    Height = Point.BUTTON_HEIGHT,
+                    Height = Box.BUTTON_HEIGHT,
                     TextAlign = ContentAlignment.MiddleRight
                 });
             }
@@ -52,23 +52,23 @@ namespace Nonogram
                 Labels.Add(new Label
                 {
                     Text = String.Join("\n", numbersY.Last()),
-                    Top = Point.RASTER_START_X - 410,
-                    Left = Point.RASTER_START_Y + (x * (Point.BUTTON_WIDTH + 1)),
-                    Width = Point.BUTTON_WIDTH,
+                    Top = Box.RASTER_START_X - 410,
+                    Left = Box.RASTER_START_Y + (x * (Box.BUTTON_WIDTH + 1)),
+                    Width = Box.BUTTON_WIDTH,
                     Height = 400,
                     TextAlign = ContentAlignment.BottomCenter
                 });
             }
         }
 
-        private static List<int> GetNumbers(List<Point> list, bool forExpected)
+        private static List<int> GetNumbers(List<Box> list, bool forExpected)
         {
             var lastIndex = -2;
             var numbers = new List<int>();
 
             for (int i = 0; i < list.Count; i++)
             {
-                if ((forExpected ? list[i].Expected : list[i].State) != Point.CaseState.MARKED)
+                if ((forExpected ? list[i].Expected : list[i].State) != Box.BoxState.MARKED)
                 {
                     lastIndex = -2;
                     continue;

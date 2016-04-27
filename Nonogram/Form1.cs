@@ -14,10 +14,10 @@ namespace Nonogram
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            cbLevel.DataSource = Enum.GetValues(typeof(Point.Level));
+            cbLevel.DataSource = Enum.GetValues(typeof(Box.Level));
             cbLevel.SelectedIndex = 1;
 
-            CreateAndDrawNonogram(10, 10, (int)Point.Level.Normal);
+            CreateAndDrawNonogram(10, 10, (int)Box.Level.Normal);
         }
 
         private void btnGenerate_Click(object sender, EventArgs e)
@@ -33,7 +33,7 @@ namespace Nonogram
 
             // Clean up old Nonogram
             nonogram.Labels.ForEach(x => Controls.Remove(x));
-            nonogram.PointsX.ForEach(x => x.ForEach(y => Controls.Remove(y.GetButton())));
+            nonogram.PointsX.ForEach(x => x.ForEach(y => Controls.Remove(y)));
 
             CreateAndDrawNonogram((int)numSizeX.Value, (int)numSizeY.Value, (int)cbLevel.SelectedItem);
         }
@@ -43,7 +43,7 @@ namespace Nonogram
             nonogram = new Nonogram(sizeX, sizeY, probability);
 
             Controls.AddRange(nonogram.Labels.ToArray());
-            nonogram.PointsX.ForEach(x => x.ForEach(y => Controls.Add(y.GetButton())));
+            nonogram.PointsX.ForEach(x => x.ForEach(y => Controls.Add(y)));
         }
 
         private void btnValidate_Click(object sender, EventArgs e)
