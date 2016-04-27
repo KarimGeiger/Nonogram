@@ -54,7 +54,7 @@ namespace Nonogram
                     Height = Form1.BUTTON_HEIGHT,
                     Margin = Padding.Empty,
                     FlatStyle = FlatStyle.Flat,
-                    TabStop = false,
+                    TabStop = false
                 };
                 button.FlatAppearance.BorderSize = 0;
                 button.MouseClick += ButtonClick;
